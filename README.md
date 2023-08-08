@@ -24,8 +24,9 @@ $ sudo ds4drv
 ```
 を打ち込み、コントローラーのPlayStationマークのボタンとSHAREボタンを本体が白く点滅するまで同時に長押し。
 
+### ROSの起動
 別のターミナルで
 ```
-$ roslaunch ps4_robot_control bringup.launch # 実機
+$ roslaunch ps4_robot_control bringup.launch
 ```
 仕様によりコントローラーとロボットのnodeを時間差を設けて起動しているので、両方起動するまで5秒ほど待つ。
