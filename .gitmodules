@@ -1,0 +1,10 @@
+[submodule "cartesian_controllers"]
+	path = cartesian_controllers
+	url = git@github.com:fzi-forschungszentrum-informatik/cartesian_controllers.git
+[submodule "denso_robot_ros"]
+	path = denso_robot_ros
+	url = git@github.com:yamachaso/denso_robot_ros.git
+	branch = noetic-devel-vs087
+[submodule "timed_roslaunch"]
+	path = timed_roslaunch
+	url = git@github.com:MoriKen254/timed_roslaunch.git
