@@ -14,6 +14,15 @@ find_package(catkin REQUIRED COMPONENTS
   tf
 )
 
+#Qt5 configulation
+set(CMAKE_AUTOMOC ON)
+find_package(Qt5 ${rviz_QT_VERSION} EXACT REQUIRED
+  Core
+  Widgets
+)
+set(QT_LIBRARIES Qt5::Widgets)
+add_definitions(-DQT_NO_KEYWORDS)
+
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -133,6 +142,14 @@ target_link_libraries(joy_twist_publisher_for_two_hands ${catkin_LIBRARIES})
 
 add_executable(joy_wrenchstamped_publisher src/joy_wrenchstamped_publisher.cpp)
 target_link_libraries(joy_wrenchstamped_publisher ${catkin_LIBRARIES})
+
+
+
+add_executable(joy_twist_publisher_qt src/joy_twist_publisher_qt.cpp src/qt_dialog.cpp)
+target_link_libraries(joy_twist_publisher_qt
+  ${catkin_LIBRARIES}
+  ${QT_LIBRARIES}
+)
 
 ####
 

@@ -1,0 +1,32 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/opt/ros/noetic/include/**",
+        "/home/shin/softhand_ws/devel/include/**",
+        "/home/shin/softhand_ws/src/softhand_ros/denso_robot_ros/bcap_core/include/**",
+        "/home/shin/softhand_ws/src/softhand_ros/denso_robot_ros/bcap_service/include/**",
+        "/home/shin/softhand_ws/src/softhand_ros/cartesian_controllers/cartesian_compliance_controller/include/**",
+        "/home/shin/softhand_ws/src/softhand_ros/cartesian_controllers/cartesian_controller_base/include/**",
+        "/home/shin/softhand_ws/src/softhand_ros/cartesian_controllers/cartesian_controller_handles/include/**",
+        "/home/shin/softhand_ws/src/softhand_ros/cartesian_controllers/cartesian_force_controller/include/**",
+        "/home/shin/softhand_ws/src/softhand_ros/cartesian_controllers/cartesian_motion_controller/include/**",
+        "/home/shin/softhand_ws/src/softhand_ros/denso_robot_ros/denso_robot_control/include/**",
+        "/home/shin/softhand_ws/src/softhand_ros/denso_robot_ros/denso_robot_core/include/**",
+        "/home/shin/softhand_ws/src/softhand_ros/cartesian_controllers/joint_to_cartesian_controller/include/**",
+        "/home/shin/softhand_ws/src/softhand_ros/ps4_robot_control/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

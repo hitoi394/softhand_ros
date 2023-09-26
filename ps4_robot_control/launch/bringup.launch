@@ -92,7 +92,7 @@
                 <arg name="pkg" value="ps4_robot_control" />
                 <arg name="file" value="joy_to_pose.launch" />
             </include>
-            
+
         </group>
         <group unless="$(arg pose)">
             <node name="joy_wrenchstamped_publisher" pkg="ps4_robot_control" type="joy_wrenchstamped_publisher" />
@@ -101,6 +101,7 @@
     <group unless="$(arg sim)">
         <group if="$(arg pose)">
             <node name="joy_twist_publisher_for_two_hands" pkg="ps4_robot_control" type="joy_twist_publisher_for_two_hands" />
+            <!-- <node name="joy_twist_publisher_qt" pkg="ps4_robot_control" type="joy_twist_publisher_qt" /> -->
 
 
             <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
