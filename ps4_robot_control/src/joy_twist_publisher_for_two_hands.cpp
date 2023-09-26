@@ -10,7 +10,7 @@ class TwistPublisher{
 public:
   TwistPublisher()
    : nh_(), pnh_("~"), last_msg(sensor_msgs::Joy()), default_max(0.04),
-     is_right(true), max_pressure(0.0), min_pressure(0.0), 
+     is_right(false), max_pressure(0.0), min_pressure(0.0), 
      max_pressure_high_limit(1.5), max_pressure_low_limit(-0.3),
      pitch(0), roll(0)
   {
@@ -18,7 +18,7 @@ public:
       nh_.advertise<geometry_msgs::Twist>("/cmd_vel/right", 1), 
       nh_.advertise<geometry_msgs::Twist>("/cmd_vel/left", 1)
     };
-    now_cmd_pub_ = &cmd_pub_[0];
+    now_cmd_pub_ = &cmd_pub_[1];
     hand_pressure_pub_ = nh_.advertise<std_msgs::Float64MultiArray>("/hand_ref_pressure", 1);
     joy_sub_ = nh_.subscribe("joy", 10, &TwistPublisher::joyCallback, this);
 
