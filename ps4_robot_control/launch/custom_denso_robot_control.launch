@@ -1,8 +1,7 @@
 <launch>
     <!-- Override ip_address argument -->
-    <arg name="ip_address_right" default="192.168.11.101" />
+
     <arg name="ip_address_left" default="192.168.11.102" />
-    <arg name="ip_address_cart" default="192.168.11.100" />
     <!-- Override robot_name argument -->
     <arg name="robot_name" default="myrobot" />
     <!-- Send format -->
@@ -19,12 +18,6 @@
 
     <!-- following params to be wanted to be placed under the each node -->
     <!-- Controller -->
-    <group ns="/$(arg robot_name)/right_arm">
-        <include file="$(find ps4_robot_control)/config/right_arm_config.launch.xml" >
-            <arg name="ip_address" value="$(arg ip_address_right)" />
-        </include>
-        <node name="denso_robot_control" pkg="denso_robot_control" type="denso_robot_control" output="screen" />
-    </group>
     <group ns="/$(arg robot_name)/left_arm">
         <include file="$(find ps4_robot_control)/config/left_arm_config.launch.xml" >
             <arg name="ip_address" value="$(arg ip_address_left)" />

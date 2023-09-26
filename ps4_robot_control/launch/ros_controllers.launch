@@ -28,9 +28,6 @@
   <group unless="$(arg sim)">
     <rosparam file="$(find ps4_robot_control)/config/real_controllers.yaml" command="load" />
     <group if="$(arg pose)">
-      <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/myrobot/right_arm" args="--namespace=/myrobot/right_arm 
-          joint_state_controller right_cartesian_motion_controller 
-      " />
       <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/myrobot/left_arm" args="--namespace=/myrobot/left_arm 
           joint_state_controller left_cartesian_motion_controller
       " />
