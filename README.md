@@ -12,13 +12,13 @@ $ sudo pip3 install ds4drv
 ```
 $ mkdir -p ~/catkin_ws/src
 $ cd ~/catkin_ws/src
-$ git clone --recursive git@github.com:yamachaso/softhand_ros.git
+$ git clone --recursive git@github.com:yamachaso/softhand_ros.git -b left-only
 $ rosdep install --from-paths . --ignore-src -r -y
 $ catkin build
 ```
 
 # 実行
-### PS41コントローラーとの接続
+### PS4コントローラーとの接続
 ```
 $ sudo ds4drv
 ```
