@@ -64,13 +64,14 @@
             <param name="publish_frequency" type="double" value="125.0" />
             <!-- ref: https://x.gd/wmbyI -->
             <rosparam param="source_list" subst_value="true">
-                [/$(arg robot_name)/joint_states, /$(arg robot_name)/left_arm/joint_states]
+                [/$(arg robot_name)/joint_states, /$(arg robot_name)/left_arm/joint_states, /$(arg robot_name)/right_arm/joint_states]
             </rosparam>
         </node>
         <include file="$(find ps4_robot_control)/launch/custom_denso_robot_control.launch">
             <arg name="robot_name" value="$(arg robot_name)" />
             <arg name="urdf_path" value="$(arg urdf_path)" />
             <arg name="ip_address_left" value="$(arg ip_address_left)" />
+            <arg name="ip_address_right" value="$(arg ip_address_right)" />
             <arg name="send_format" value="$(arg send_format)" />
             <arg name="recv_format" value="$(arg recv_format)" />
             <arg name="bcap_slave_control_cycle_msec" value="$(arg bcap_slave_control_cycle_msec)" />
