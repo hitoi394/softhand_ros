@@ -11,7 +11,7 @@ public:
   TwistPublisher()
    : nh_(), pnh_("~"), last_msg(sensor_msgs::Joy()), default_max(0.04),
      is_right(false), max_pressure(0.0), min_pressure(0.0), 
-     max_pressure_high_limit(0.5), max_pressure_low_limit(0.0),
+     max_pressure_high_limit(1.0), max_pressure_low_limit(0.0),
      pitch(0), roll(0)
   {
     cmd_pub_ = {
@@ -108,7 +108,7 @@ public:
       if(is_right) {
         hand_ref_pressure.data[1] = max_pressure;
       } else {
-        hand_ref_pressure.data[0] = max_pressure;
+        hand_ref_pressure.data[0] = min<double>(max_pressure, 0.3);
       }
       hand_pressure_pub_.publish(hand_ref_pressure);
     }
