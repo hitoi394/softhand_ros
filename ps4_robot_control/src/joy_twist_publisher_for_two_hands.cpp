@@ -11,7 +11,7 @@ public:
   TwistPublisher()
    : nh_(), pnh_("~"), last_msg(sensor_msgs::Joy()), default_max(0.04),
      is_right(false), max_pressure(0.0), min_pressure(0.0), 
-     max_pressure_high_limit(1.5), max_pressure_low_limit(-0.3),
+     max_pressure_high_limit(0.5), max_pressure_low_limit(0.0),
      pitch(0), roll(0)
   {
     cmd_pub_ = {
@@ -28,7 +28,8 @@ public:
 
   void joyCallback(const sensor_msgs::Joy& joy_msg) {
     // last_joy_ = joy_msg;
-
+    /* 
+    // Wireless (Bluetooth)
     int assign_x = 1; //axes, 左joyの左右
     int assign_y = 0; //axes, 左joyの上下
     int assign_z = 5; //axes, 右joyの上下
@@ -43,25 +44,47 @@ public:
 
     int switch_left = 6; // buttons, L2
     int switch_right = 7; // buttons, R2
+    */
+    
+    // Wired (USB)
+    int assign_x = 1; //axes, 左joyの上下
+    int assign_y = 0; //axes, 左joyの左右
+    int assign_z = 4; //axes, 右joyの上下
+    int assign_roll = 6; //axes, 左十字の左右
+    int assign_pitch = 7; // axes, 左十字の上下 
+    int assign_yaw_l = 4; //buttons, L1
+    int assign_yaw_r = 5; //buttons, R1
+
+    int assign_grab = 1; //buttons, 丸
+    int assign_release = 3; //buttons, 四角
+
+    int max_increment = 2; // buttons, 三角
+    int max_decrement = 0; // buttons, バツ
+
+    int switch_left = 6; // buttons, L2
+    int switch_right = 7; // buttons, R2
 
 
     float max_x = default_max;
     float max_y = default_max;
     float max_z = default_max;
+    float max_roll = default_max * 10;
+    float max_pitch = default_max * 10;
     float max_yaw = default_max * 10;
 
-    geometry_msgs::Twist cmd_vel;
     cmd_vel.linear.x = max_x * joy_msg.axes[assign_x];
     cmd_vel.linear.y = max_y * joy_msg.axes[assign_y];
     cmd_vel.linear.z = max_z * joy_msg.axes[assign_z];
 
-    float kaiten = joy_msg.buttons[assign_yaw] - joy_msg.buttons[assign_yaw_r];
-    cmd_vel.angular.z = max_yaw * kaiten;
+    cmd_vel.angular.x = max_roll * joy_msg.axes[assign_roll];
+    cmd_vel.angular.y = max_pitch * joy_msg.axes[assign_pitch];
+    float joy_msg_yaw = joy_msg.buttons[assign_yaw_l] - joy_msg.buttons[assign_yaw_r];
+    cmd_vel.angular.z = max_yaw * joy_msg_yaw;
 
-    now_cmd_pub_->publish(cmd_vel);
+    // now_cmd_pub_->publish(cmd_vel);
 
     if(joy_msg.buttons[assign_grab] > 0) {
-      max_pressure = 0.8;
+      max_pressure = 0.0;
       std_msgs::Float64MultiArray hand_ref_pressure;
       hand_ref_pressure.data.assign(2, min_pressure);
       if(is_right) {
@@ -135,13 +158,20 @@ public:
   float max_pressure_low_limit;
   int pitch;
   int roll;
-
+  geometry_msgs::Twist cmd_vel;
 };
 
 int main(int argc, char** argv)
 {
   ros::init(argc, argv, "basic_twist_publisher");
   TwistPublisher twist_publisher;
-  ros::spin();
+  // ros::spin();
+  ros::Rate rate(100);
+  while (ros::ok())
+  {
+    twist_publisher.now_cmd_pub_->publish(twist_publisher.cmd_vel);
+    ros::spinOnce();
+    rate.sleep();
+  }
   return 0;
 }
