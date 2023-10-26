@@ -108,7 +108,7 @@ public:
       if(is_right) {
         hand_ref_pressure.data[1] = max_pressure;
       } else {
-        hand_ref_pressure.data[0] = min<double>(max_pressure, 0.3);
+        hand_ref_pressure.data[0] = max_pressure; //min<double>(max_pressure, 0.3);
       }
       hand_pressure_pub_.publish(hand_ref_pressure);
     }

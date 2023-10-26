@@ -30,3 +30,12 @@ $ sudo ds4drv
 $ roslaunch ps4_robot_control bringup.launch
 ```
 仕様によりコントローラーとロボットのnodeを時間差を設けて起動しているので、両方起動するまで5秒ほど待つ。
+
+### rosbag
+```
+$ rosbag record -O ~/rosbag/<file_name: 20231025_depth_points_side2.bag> /camera/depth/color/points /tf /joy /hand_angle
+```
+realsense setup
+```
+$ rosrun realsense2_camera rs_camera.launch
+```
