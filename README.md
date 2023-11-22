@@ -39,3 +39,10 @@ realsense setup
 ```
 $ rosrun realsense2_camera rs_camera.launch
 ```
+
+### sensor position
+           0 4
+        black dome
+2 1                   5 3
+          
+          no sensor
