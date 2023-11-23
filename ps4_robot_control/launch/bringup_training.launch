@@ -31,6 +31,9 @@
 
     <!-- for multiple_rs_camera.launch -->
     <arg name="use_camera" default="true" />
+    <!-- <param name="image_topic" value="/$(arg robot_name)/$(arg used_camera)/color/image_raw" />
+    <param name="depth_topic" value="/$(arg robot_name)/$(arg used_camera)/aligned_depth_to_color/image_raw" />
+    <param name="points_topic" value="/$(arg robot_name)/$(arg used_camera)/depth/color/points" /> -->
     <!-- left -->
     <arg name="camera_serial_no_1" default="032622073208" />
     <!-- right -->
