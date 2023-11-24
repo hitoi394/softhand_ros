@@ -39,11 +39,11 @@
     <!-- right -->
     <arg name="camera_serial_no_2" default="" /> <!-- 915112070340 -->
     <!-- body -->
-    <arg name="camera_serial_no_3" default="" /> <!-- 047322070125 -->
+    <arg name="camera_serial_no_3" default="047322070125" /> <!--  -->
     <!-- side -->
     <arg name="camera_serial_no_4" default="053122250907" />
     <!-- front -->
-    <arg name="camera_serial_no_5" default="915112070378" />
+    <arg name="camera_serial_no_5" default="" /> <!--915112070378-->
 
     <!-- <include file="$(find myrobot_v2_moveit_config)/launch/planning_context.launch"> -->
         <!-- <arg name="load_robot_description" value="$(arg load_robot_description)" /> -->
